@@ -48,11 +48,15 @@ export default {
   },
   methods: {
     ...mapActions([
-      'login' // 将 `this.login()` 映射为 `this.$store.dispatch('login')`
+      'login', // 将 `this.login()` 映射为 `this.$store.dispatch('login')`
+      'setRouter'
     ]),
     userLogin () {
-      this.login(this.formLabelAlign).then(({ state }) => {
-        state === 100 && this.$router.push({ name: 'mainHome' })
+      this.login(this.formLabelAlign).then(async ({ state }) => {
+        if (state === 100) {
+          await this.setRouter()
+          this.$router.push({ name: 'menu1' })
+        }
       })
     }
   }

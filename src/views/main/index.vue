@@ -1,17 +1,29 @@
 <template>
- <div class="MainHome">
-  这是系统主页面
-  {{msg}}
-  <el-button type="primary" @click="signOut">登出</el-button>
- </div>
+  <el-container>
+    <el-aside width="200px">
+      <Menu></Menu>
+    </el-aside>
+    <el-container>
+      <el-header>
+        <layoutNav></layoutNav>
+      </el-header>
+      <el-main>
+        <appMain></appMain>
+      </el-main>
+    </el-container>
+  </el-container>
 </template>
 
 <script>
+import Menu from '@/views/layout/menu'
+import layoutNav from '@/views/layout/layoutNav'
+import appMain from '@/views/layout/appMain'
 export default {
   name: 'MainHome',
+  components: { Menu, layoutNav, appMain },
   data () {
     return {
-      msg: 'Welcome!!!'
+
     }
   },
   computed: {
@@ -21,11 +33,7 @@ export default {
 
   },
   methods: {
-    signOut () {
-      this.$store.dispatch('signOut').then(({ state }) => {
-        state === 100 && this.$router.push({ name: 'Home' })
-      })
-    }
+
   }
 }
 </script>

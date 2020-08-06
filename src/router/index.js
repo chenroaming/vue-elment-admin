@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 // import Home from '@/views/Home.vue'
 // import login from '@/views/login/index'
 Vue.use(VueRouter)
-
+const mainHome = () => import('@/views/main')
 export const constantRouterMap = [
   {
     path: '/',
@@ -16,13 +16,37 @@ export const constantRouterMap = [
     component: () => import('@/views/login')
   },
   {
-    path: '/MainHome',
-    name: 'mainHome',
-    component: () => import('@/views/main')
-  },
-  {
     path: '/404',
     component: () => import('@/views/404')
+  }
+]
+
+export const asyncRouterMap = [
+  {
+    path: '/menu1',
+    name: 'menu1',
+    redirect: '/menu1/index',
+    component: mainHome,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/menu1'), // Parent router-view
+        name: 'screen-manger'
+      }
+    ]
+  },
+  {
+    path: '/menu2',
+    name: 'menu2',
+    redirect: '/menu2/index',
+    component: mainHome,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/menu2'), // Parent router-view
+        name: 'screen-manger'
+      }
+    ]
   },
   {
     path: '*',
