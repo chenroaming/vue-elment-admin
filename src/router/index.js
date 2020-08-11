@@ -25,13 +25,20 @@ export const asyncRouterMap = [
   {
     path: '/menu1',
     name: 'menu1',
+    meta: {
+      title: '菜单一',
+      icon: 'el-icon-location'
+    },
     redirect: '/menu1/index',
     component: mainHome,
     children: [
       {
         path: 'index',
         component: () => import('@/views/menu1'), // Parent router-view
-        name: 'screen-manger'
+        meta: {
+          title: '菜单一子菜单1'
+        },
+        name: 'child1'
       }
     ]
   },
@@ -39,18 +46,54 @@ export const asyncRouterMap = [
     path: '/menu2',
     name: 'menu2',
     redirect: '/menu2/index',
+    meta: {
+      title: '菜单二',
+      icon: 'el-icon-menu'
+    },
     component: mainHome,
     children: [
       {
         path: 'index',
         component: () => import('@/views/menu2'), // Parent router-view
-        name: 'screen-manger'
+        meta: {
+          title: '菜单二子菜单2'
+        },
+        name: 'child2'
+      }
+    ]
+  },
+  {
+    path: '/menu3',
+    name: 'menu3',
+    redirect: '/menu3/index',
+    meta: {
+      title: '菜单三',
+      icon: 'el-icon-menu'
+    },
+    component: mainHome,
+    children: [
+      {
+        path: '/menu3/index',
+        component: () => import('@/views/menu3'),
+        meta: {
+          title: '菜单三子菜单1'
+        },
+        name: 'child3-1'
+      },
+      {
+        path: '/menu3/child1',
+        component: () => import('@/views/menu3/child'),
+        meta: {
+          title: '菜单三子菜单2'
+        },
+        name: 'child3-2'
       }
     ]
   },
   {
     path: '*',
     redirect: '/404',
+    hide: true,
     component: () => import('@/views/404')
   }
 ]

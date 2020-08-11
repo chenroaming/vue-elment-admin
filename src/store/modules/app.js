@@ -1,11 +1,15 @@
 import router, { asyncRouterMap } from '@/router'
 const app = {
   state: {
-    asyncRouter: []
+    asyncRouter: [],
+    isOpen: false
   },
   mutations: {
     SET_ROUTER: (state, routerList) => {
       state.asyncRouter = routerList
+    },
+    SET_OPENSTATE: (state, status) => {
+      state.isOpen = !state.isOpen
     }
   },
   actions: {
@@ -15,6 +19,9 @@ const app = {
         commit('SET_ROUTER', asyncRouterMap)
         resolve()
       })
+    },
+    toggleOpen ({ commit }) {
+      commit('SET_OPENSTATE')
     }
   }
 }

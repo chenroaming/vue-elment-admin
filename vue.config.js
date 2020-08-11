@@ -41,5 +41,14 @@ module.exports = {
         return assetFilename.endsWith('.js')// 只给初相关js文件的性能提示
       }
     }
+  },
+  pwa: { // 标签页图标
+    iconPaths: {
+      favicon32: './favicon.ico',
+      favicon16: './favicon.ico',
+      appleTouchIcon: './favicon.ico',
+      maskIcon: './favicon.ico',
+      msTileImage: './favicon.ico'
+    }
   }
 }

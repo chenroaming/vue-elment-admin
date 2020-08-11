@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-aside width="200px">
+    <el-aside width="auto">
       <Menu></Menu>
     </el-aside>
     <el-container>
@@ -39,5 +39,10 @@ export default {
 </script>
 
 <style scoped lang = "scss">
-
+  .el-header {
+    padding: 0;
+  }
+  .el-aside {
+    overflow: unset;
+  }
 </style>
