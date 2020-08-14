@@ -1,7 +1,11 @@
 <template>
   <el-breadcrumb separator="/">
-    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-    <el-breadcrumb-item>{{ nowPage }}</el-breadcrumb-item>
+    <transition-group name="breadcrumb" mode="out-in">
+      <el-breadcrumb-item
+      v-for="item in menuList"
+      :key="item.path"
+      :to="{ path:item.path }">{{ item.title }}</el-breadcrumb-item>
+    </transition-group>
   </el-breadcrumb>
 </template>
 
@@ -10,19 +14,24 @@ export default {
   name: 'breadcrumb',
   data () {
     return {
-      nowPage: '菜单一子菜单1'
+      menuList: []
     }
   },
   watch: {
     $route (cur, old) {
-      this.nowPage = cur.meta.title
+      this.getBreadCrumb(cur)
     }
   },
   mounted () {
-
+    this.getBreadCrumb(this.$route)
   },
   methods: {
-
+    getBreadCrumb (menu) {
+      const { meta: { title }, path } = menu
+      this.menuList = [{ title: '首页', path: '/' }].concat(
+        [{ title, path }]
+      )
+    }
   }
 }
 </script>

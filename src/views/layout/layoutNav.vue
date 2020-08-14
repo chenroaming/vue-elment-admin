@@ -1,10 +1,6 @@
 <template>
  <div class="header">
   <i class="toggleButton" :class="[ isCollapse ? 'el-icon-s-fold' : 'el-icon-s-unfold' ]" @click="closeMenu"></i>
-  <!-- <el-breadcrumb separator="/">
-    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-    <el-breadcrumb-item>活动管理</el-breadcrumb-item>
-  </el-breadcrumb> -->
   <breadcrumb></breadcrumb>
   <div class="title">通用后台管理模板</div>
   <avatar></avatar>

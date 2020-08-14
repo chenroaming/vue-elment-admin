@@ -28,24 +28,10 @@ export default {
 
 <style scoped lang = "scss">
  .app-main {
-  /*50 = navbar  */
-  min-height: calc(100vh - 67px);
+  height: calc(100vh - 67px);
   position: relative;
   overflow: auto;
-}
-/*fade-transform*/
-.fade-transform-leave-active,
-.fade-transform-enter-active {
-  transition: all .5s;
-}
-
-.fade-transform-enter {
-  opacity: 0;
-  transform: translateX(-30px);
-}
-
-.fade-transform-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 </style>

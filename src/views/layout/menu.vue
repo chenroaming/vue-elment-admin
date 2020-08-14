@@ -1,17 +1,15 @@
 <template>
-  <div>
-    <el-menu
-      class="el-menu-vertical-demo"
-      :collapse="isCollapse"
-      :default-active="nowActive"
-      router
-      unique-opened>
-      <slideItem
-        v-for="item in filterRouter"
-        :key="item.meta.title"
-        :item="item"></slideItem>
-    </el-menu>
-  </div>
+  <el-menu
+    class="el-menu-vertical-demo"
+    :collapse="isCollapse"
+    :default-active="nowActive"
+    router
+    unique-opened>
+    <slideItem
+      v-for="item in filterRouter"
+      :key="item.meta.title"
+      :item="item"></slideItem>
+  </el-menu>
 </template>
 
 <script>

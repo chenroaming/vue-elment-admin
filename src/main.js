@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import '@/style/index.scss' // 引入公共样式
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import api from './api/apiList' // 引入api列表文件

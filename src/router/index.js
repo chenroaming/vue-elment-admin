@@ -91,6 +91,54 @@ export const asyncRouterMap = [
     ]
   },
   {
+    path: '/menu4',
+    name: 'menu4',
+    meta: {
+      title: '菜单四',
+      icon: 'el-icon-location'
+    },
+    redirect: '/menu4/index',
+    component: mainHome,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/menu4'), // Parent router-view
+        meta: {
+          title: '菜单四子菜单1'
+        },
+        name: 'child4'
+      }
+    ]
+  },
+  {
+    path: '/menu5',
+    name: 'menu5',
+    meta: {
+      title: '菜单五',
+      icon: 'el-icon-location'
+    },
+    redirect: '/menu5/index',
+    component: mainHome,
+    children: [
+      {
+        path: '/menu5/index',
+        component: () => import('@/views/menu5'),
+        meta: {
+          title: '菜单五子菜单1'
+        },
+        name: 'child5-1'
+      },
+      {
+        path: '/menu5/child1',
+        component: () => import('@/views/menu5/child1'),
+        meta: {
+          title: '菜单五子菜单2'
+        },
+        name: 'child5-2'
+      }
+    ]
+  },
+  {
     path: '*',
     redirect: '/404',
     hide: true,
