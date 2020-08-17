@@ -28,10 +28,14 @@ export default {
 
 <style scoped lang = "scss">
  .app-main {
+  padding: 20px;
   height: calc(100vh - 67px);
   position: relative;
   overflow: auto;
   overflow-x: hidden;
   overflow-y: auto;
+}
+.app-main::-webkit-scrollbar {
+    display: none;
 }
 </style>
