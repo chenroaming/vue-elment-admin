@@ -1,6 +1,7 @@
 <template>
  <div class="">
   {{msg}}
+  <el-button type="primary" @click="back">点击返回</el-button>
  </div>
 </template>
 
@@ -12,18 +13,10 @@ export default {
       msg: '这是一个不存在的页面'
     }
   },
-  computed: {
-
-  },
-  mounted () {
-
-  },
   methods: {
-
+    back () {
+      this.$router.go(-1)
+    }
   }
 }
 </script>
-
-<style scoped lang = "scss">
-
-</style>

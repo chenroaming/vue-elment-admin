@@ -11,5 +11,9 @@ export default {
   signOut () { // 登录接口
     header = {}
     return api.post(urls.signOut, '', header, '', true)
+  },
+  getAuth () { // 获取权限列表接口
+    header = {}
+    return api.post(urls.getAuth, '', header, '')
   }
 }

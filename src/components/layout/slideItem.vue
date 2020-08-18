@@ -19,8 +19,8 @@
     </el-menu-item-group>
   </el-submenu>
   <el-menu-item :index="item.path" v-else>
-      <i :class="item.meta.icon"></i>
-      <span slot="title">{{ item.meta.title }}</span>
+    <i :class="item.meta.icon"></i>
+    <span slot="title">{{ item.meta.title }}</span>
   </el-menu-item>
 </template>
 
@@ -35,7 +35,7 @@ export default {
   },
   data () {
     return {
-      msg: 'Welcome to your vueName'
+
     }
   },
   computed: {

@@ -8,3 +8,7 @@ Mock.mock('/api/main/login', 'post', (params) => {
 Mock.mock('/api/main/signOut', 'post', () => {
   return visualApi.signOut()
 })
+
+Mock.mock('/api/main/getAuth', 'post', () => {
+  return visualApi.getAuth()
+})

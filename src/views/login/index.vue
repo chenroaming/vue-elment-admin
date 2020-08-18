@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'login',
   data () {
@@ -41,10 +41,14 @@ export default {
     }
   },
   computed: {
-
+    ...mapGetters([
+      'isLogin'
+    ])
   },
-  mounted () {
-
+  created () {
+    if (this.isLogin) {
+      this.$router.push({ name: 'menu1' })
+    }
   },
   methods: {
     ...mapActions([

@@ -1,7 +1,6 @@
 @import './transtion.scss';
 
 .el-scrollbar {
-  overflow: hidden!important;
   position: relative;
 }
 
@@ -11,4 +10,8 @@
 
 .scrollbar {
   height: calc( 100vh - 165px);
+}
+
+.dashboard-container {
+  overflow: hidden;
 }

@@ -50,7 +50,7 @@ export default {
 
 <style scoped lang = "scss">
   .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 198px;
+    width: 200px;
     height: 100vh;
   }
 </style>

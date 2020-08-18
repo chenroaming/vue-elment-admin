@@ -1,8 +1,11 @@
 import router, { asyncRouterMap } from '@/router'
+import { filterRouters } from '@/utils/permission'
+import api from '@/api/apiList' // 引入api列表文件
 const app = {
   state: {
     asyncRouter: [],
-    isOpen: false
+    isOpen: false,
+    roles: []
   },
   mutations: {
     SET_ROUTER: (state, routerList) => {
@@ -10,14 +13,24 @@ const app = {
     },
     SET_OPENSTATE: (state, status) => {
       state.isOpen = !state.isOpen
+    },
+    SET_ROLES: (state, roles) => {
+      state.roles = roles
     }
   },
   actions: {
     setRouter ({ commit }) {
       return new Promise((resolve, reject) => {
-        router.addRoutes(asyncRouterMap)
-        commit('SET_ROUTER', asyncRouterMap)
-        resolve()
+        api.user.getAuth().then(({ state, list }) => {
+          if (state === 100) {
+            const filterRoutes = filterRouters(asyncRouterMap, list)
+            router.addRoutes(filterRouters(asyncRouterMap, list))
+            commit('SET_ROLES', list)
+            commit('SET_ROUTER', filterRoutes)
+          }
+          resolve()
+        })
+          .catch(err => { reject(err) })
       })
     },
     toggleOpen ({ commit }) {

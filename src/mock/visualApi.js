@@ -15,8 +15,17 @@ const signOut = () => {
   }
 }
 
+const getAuth = () => {
+  return {
+    message: '获取成功！',
+    state: 100,
+    list: ['admin', 'user', 'manager']
+  }
+}
+
 const visualApi = {
   login,
-  signOut
+  signOut,
+  getAuth
 }
 export default visualApi
