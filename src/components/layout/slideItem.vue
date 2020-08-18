@@ -19,10 +19,8 @@
     </el-menu-item-group>
   </el-submenu>
   <el-menu-item :index="item.path" v-else>
-    <template slot="title">
       <i :class="item.meta.icon"></i>
       <span slot="title">{{ item.meta.title }}</span>
-    </template>
   </el-menu-item>
 </template>
 

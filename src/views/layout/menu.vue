@@ -3,6 +3,8 @@
     class="el-menu-vertical-demo"
     :collapse="isCollapse"
     :default-active="nowActive"
+    background-color="#545c64"
+    text-color="#fff"
     router
     unique-opened>
     <slideItem

@@ -48,7 +48,7 @@ export const asyncRouterMap = [
     redirect: '/menu2/index',
     meta: {
       title: '菜单二',
-      icon: 'el-icon-menu'
+      icon: 'el-icon-user'
     },
     component: mainHome,
     children: [
@@ -68,7 +68,7 @@ export const asyncRouterMap = [
     redirect: '/menu3/index',
     meta: {
       title: '菜单三',
-      icon: 'el-icon-menu'
+      icon: 'el-icon-phone'
     },
     component: mainHome,
     children: [
@@ -95,7 +95,7 @@ export const asyncRouterMap = [
     name: 'menu4',
     meta: {
       title: '菜单四',
-      icon: 'el-icon-location'
+      icon: 'el-icon-picture-outline-round'
     },
     redirect: '/menu4/index',
     component: mainHome,
@@ -115,7 +115,7 @@ export const asyncRouterMap = [
     name: 'menu5',
     meta: {
       title: '菜单五',
-      icon: 'el-icon-location'
+      icon: 'el-icon-s-ticket'
     },
     redirect: '/menu5/index',
     component: mainHome,
