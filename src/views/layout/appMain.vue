@@ -48,11 +48,13 @@ export default {
   methods: {
     removeTab (targetName) {
       if (this.editableTabs.length < 2) return false
+      const index = this.editableTabs.findIndex(item => item.path === targetName)
+      this.editableTabsValue === targetName &&
+        this.$router.push({
+          path: index === this.editableTabs.length - 1
+            ? this.editableTabs[index - 1].path : this.editableTabs[index + 1].path
+        })
       this.editableTabs = this.editableTabs.filter(item => item.path !== targetName)
-      this.editableTabsValue = this.editableTabs[this.editableTabs.length - 1].path
-      this.editableTabsValue !== this.$route.path && this.$router.push({
-        path: this.editableTabsValue
-      })
     },
     clickTab ({ name }) {
       if (this.$route.path === name) return false
