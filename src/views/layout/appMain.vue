@@ -1,9 +1,24 @@
 <template>
-  <section class="app-main">
-    <transition name="fade-transform" mode="out-in">
-      <router-view></router-view>
-    </transition>
- </section>
+  <el-tabs
+    v-model="editableTabsValue"
+    type="card"
+    closable
+    class="app-main"
+    @tab-remove="removeTab"
+    @tab-click="clickTab">
+    <el-tab-pane
+      :key="item.path"
+      v-for="item in editableTabs"
+      :label="item.title"
+      :name="item.path"
+    >
+      <section>
+        <transition name="fade-transform" mode="out-in">
+          <router-view></router-view>
+        </transition>
+      </section>
+    </el-tab-pane>
+  </el-tabs>
 </template>
 
 <script>
@@ -11,17 +26,41 @@ export default {
   name: 'vueName',
   data () {
     return {
-      msg: 'Welcome to your vueName'
+      editableTabsValue: '',
+      editableTabs: []
     }
   },
-  computed: {
-
+  watch: {
+    $route (cur, old) {
+      const { meta: { title }, path } = cur
+      this.editableTabs = this.editableTabs.some(item => item.title === title)
+        ? this.editableTabs : this.editableTabs.concat([{ title, path }])
+      this.editableTabsValue = path
+    }
   },
-  mounted () {
-
+  created () {
+    const { meta: { title }, path } = this.$route
+    this.editableTabs.push(
+      { title, path }
+    )
+    this.editableTabsValue = path
   },
   methods: {
-
+    removeTab (targetName) {
+      if (this.editableTabs.length < 2) return false
+      this.editableTabs = this.editableTabs.filter(item => item.path !== targetName)
+      this.editableTabsValue = this.editableTabs[this.editableTabs.length - 1].path
+      this.editableTabsValue !== this.$route.path && this.$router.push({
+        path: this.editableTabsValue
+      })
+    },
+    clickTab ({ name }) {
+      if (this.$route.path === name) return false
+      this.editableTabsValue = name
+      this.$router.push({
+        path: name
+      })
+    }
   }
 }
 </script>
@@ -36,6 +75,6 @@ export default {
     overflow-y: auto;
   }
   .app-main::-webkit-scrollbar {
-      display: none;
+    display: none;
   }
 </style>
