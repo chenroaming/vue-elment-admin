@@ -23,6 +23,28 @@ export const constantRouterMap = [
 
 export const asyncRouterMap = [
   {
+    path: '/mainHome',
+    name: 'mainHome',
+    meta: {
+      title: '主菜单',
+      icon: 'el-icon-s-home',
+      roles: ['admin']
+    },
+    redirect: '/mainHome/index',
+    component: mainHome,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/mainHome'), // Parent router-view
+        meta: {
+          title: '主菜单',
+          roles: ['admin']
+        },
+        name: 'mainHomeChild'
+      }
+    ]
+  },
+  {
     path: '/menu1',
     name: 'menu1',
     meta: {

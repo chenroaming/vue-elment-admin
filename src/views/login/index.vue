@@ -47,7 +47,7 @@ export default {
   },
   created () {
     if (this.isLogin) {
-      this.$router.push({ name: 'menu1' })
+      this.$router.push({ name: 'mainHomeChild' })
     }
   },
   methods: {
@@ -59,7 +59,7 @@ export default {
       this.login(this.formLabelAlign).then(async ({ state }) => {
         if (state === 100) {
           await this.setRouter()
-          this.$router.push({ name: 'menu1' })
+          this.$router.push({ name: 'mainHomeChild' })
         }
       })
     }
