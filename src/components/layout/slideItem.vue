@@ -13,7 +13,7 @@
         v-if="child.children && child.children.length > 0"
         :item="child"></slideItem>
       <el-menu-item
-        v-else
+        v-if="!child.children"
         :key="child.name"
         :index="child.path">{{ child.meta.title }}</el-menu-item>
     </el-menu-item-group>
@@ -40,8 +40,8 @@ export default {
   },
   computed: {
     hasChildNode () {
-      // 只有一个子菜单则直接显示为一级菜单，只有超过两个子级菜单才显示为二级菜单
-      return this.item.children && this.item.children.length > 1
+      // 是否折叠菜单
+      return this.item.children && this.item.children.length > 0 && this.item.isCollapse
     }
   },
   mounted () {

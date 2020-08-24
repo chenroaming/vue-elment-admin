@@ -31,6 +31,7 @@ export const asyncRouterMap = [
       roles: ['admin']
     },
     redirect: '/mainHome/index',
+    isCollapse: false,
     component: mainHome,
     children: [
       {
@@ -53,6 +54,7 @@ export const asyncRouterMap = [
       roles: ['admin']
     },
     redirect: '/menu1/index',
+    isCollapse: false,
     component: mainHome,
     children: [
       {
@@ -75,6 +77,7 @@ export const asyncRouterMap = [
       icon: 'el-icon-user',
       roles: ['admin']
     },
+    isCollapse: false,
     component: mainHome,
     children: [
       {
@@ -97,6 +100,7 @@ export const asyncRouterMap = [
       icon: 'el-icon-phone',
       roles: ['admin']
     },
+    isCollapse: true,
     component: mainHome,
     children: [
       {
@@ -128,10 +132,11 @@ export const asyncRouterMap = [
       roles: ['admin']
     },
     redirect: '/menu4/index',
+    isCollapse: false,
     component: mainHome,
     children: [
       {
-        path: 'index',
+        path: '/menu4/index',
         component: () => import('@/views/menu4'), // Parent router-view
         meta: {
           title: '菜单四子菜单1',
@@ -150,6 +155,7 @@ export const asyncRouterMap = [
       roles: ['admin']
     },
     redirect: '/menu5/index',
+    isCollapse: true,
     component: mainHome,
     children: [
       {
@@ -178,6 +184,50 @@ export const asyncRouterMap = [
           roles: ['admin1']
         },
         name: 'child5-3'
+      }
+    ]
+  },
+  {
+    path: '/menu6',
+    name: 'menu6',
+    meta: {
+      title: '菜单六',
+      icon: 'el-icon-s-ticket',
+      roles: ['admin']
+    },
+    isCollapse: true,
+    redirect: '/menu6/index',
+    component: mainHome,
+    children: [
+      {
+        path: '/menu6/index',
+        meta: {
+          title: '菜单六子菜单1',
+          roles: ['admin']
+        },
+        isCollapse: true,
+        component: () => import('@/views/menu6/child1/index'),
+        name: 'child6-1',
+        children: [
+          {
+            path: '/menu6/index',
+            component: () => import('@/views/menu6/child1/child1'),
+            meta: {
+              title: '菜单六第三级菜单1',
+              roles: ['admin']
+            },
+            name: 'child6-1-1'
+          },
+          {
+            path: '/menu6/child2',
+            component: () => import('@/views/menu6/child1/child2'),
+            meta: {
+              title: '菜单六第三级菜单2',
+              roles: ['admin']
+            },
+            name: 'child6-1-2'
+          }
+        ]
       }
     ]
   },
